@@ -14,8 +14,6 @@ const colorText = ['#333333', '#7E7A77', '#333333']
 const colorH1 = ['#fff', '#fff', '#131E2F']
 const colorsContact = ['#2e6a8d', '#FF5E1E', '#2e6a8d']
 
-
-
 const validar = () => {
     const data = {
         user: 'quiz',
@@ -26,61 +24,10 @@ const validar = () => {
     const password = document.getElementById('password-box').value
 
     if (user == data.user && password == data.password) {
-        alert('foi')
         window.open("./quiz.html")
     } else {
         alert('Usuário ou Senha incorretos')
     }
-}
-function comecarQuiz() {
-    var pmpPerguntas = [
-        "01. Qual é o nome da parte da bicicleta que você gira para mudar as marchas?",
-        "02. Como é chamado a função que você usa para parar a bicicleta?",
-        "03. Qual é o componente da bicicleta que você usa para sentar enquanto pedala?",
-        "04. Como é chamado o conjunto de rodas de uma bicicleta?",
-        "05. Qual é o nome da parte da bicicleta onde você segura enquanto pedala?",
-        "06. O que é um pneu de bicicleta cheio de ar chamado?",
-        "07. Que parte da bicicleta é usada para pedalar?",
-        "08. O que você usa para direcionar uma bicicleta?",
-        "09. Como é chamado a função que você usa para alterar a velocidade de uma bicicleta sem mudar de marcha?",
-        "10. Qual é o componente da bicicleta que conecta o selim ao guidão?"
-    ];
-
-    var respostasCorretas = [
-        "cambio",
-        "freio",
-        "selim",
-        "aro",
-        "guidão",
-        "pneu",
-        "pedal",
-        "guidão",
-        "acelerador",
-        "tubo do selim"
-    ];
-
-    var listaPergunta = 0;
-
-    function exibirProximaResposta() {
-        if (listaPergunta < pmpPerguntas.length) {
-            var respostaUsuario = prompt(pmpPerguntas[listaPergunta]);
-            var respostaCorreta = respostasCorretas[listaPergunta];
-            var mensagem = "";
-
-            if (respostaUsuario === respostaCorreta) {
-                mensagem = "Acertou!";
-            } else {
-                mensagem = "Errou! A resposta correta é: " + respostaCorreta;
-            }
-
-            document.getElementById("resultado").innerHTML += "<p>" + (listaPergunta + 1) + ". Sua resposta: " + respostaUsuario + "<br>" + mensagem + "</p>";
-
-            listaPergunta++;
-            setTimeout(exibirProximaResposta, 1000); // Espera 1 segundo antes de mostrar a próxima resposta
-        }
-    }
-
-    exibirProximaResposta();
 }
 
 const changeBackgroundIndex = () => {
@@ -144,49 +91,6 @@ const changeBackgroundIndex = () => {
     }
 }
 
-
-const changeBackgroundLogin = () => {
-    const main = document.querySelector('main')
-    const btnColor = document.getElementById('btnColor')
-    const footer = document.querySelector('footer')
-    const header = document.querySelector('header')
-    const h1 = document.querySelectorAll('h1')
-    const btn = document.getElementById('btn')
-
-    btnColor.style.background = colorsOne[index]
-    main.style.background = colorsOne[index]
-    footer.style.background = colorsThree[index]
-    header.style.background = colorsThree[index]
-    btn.style.background = colorsContact[index]
-    h1[1].style.color = colorsContact[index]
-
-    const input = document.querySelectorAll('.input')
-    const label = document.querySelectorAll('.label')
-    input[0].addEventListener('focus', () => {
-        label[0].style.color = colorsContact[index == 0 ? index : index - 1];
-    })
-    input[1].addEventListener('focus', () => {
-        label[1].style.color = colorsContact[index == 0 ? index : index - 1];
-    })
-
-    input[0].addEventListener('blur', () => {
-        label[0].style.color = '#000';
-    })
-    input[1].addEventListener('blur', () => {
-        label[1].style.color = '#000';
-    })
-
-    if (index == 2) {
-        btnColor.style.color = "#000000"
-        btnColor.style.border = "2px solid #000000"
-        index = 0
-    } else {
-        btnColor.style.border = "2px solid #ffff"
-        btnColor.style.color = "#FFFFFF"
-        index++
-    }
-}
-
 const changeBackgroundContact = () => {
     const main = document.querySelector('main')
     const btnColor = document.getElementById('btnColor')
@@ -235,6 +139,98 @@ const changeBackgroundContact = () => {
     }
 }
 
+const changeBackgroundLogin = () => {
+    const main = document.querySelector('main')
+    const btnColor = document.getElementById('btnColor')
+    const footer = document.querySelector('footer')
+    const header = document.querySelector('header')
+    const h1 = document.querySelectorAll('h1')
+    const btn = document.getElementById('btn')
+
+    btnColor.style.background = colorsOne[index]
+    main.style.background = colorsOne[index]
+    footer.style.background = colorsThree[index]
+    header.style.background = colorsThree[index]
+    btn.style.background = colorsContact[index]
+    h1[1].style.color = colorsContact[index]
+
+    const input = document.querySelectorAll('.input')
+    const label = document.querySelectorAll('.label')
+    input[0].addEventListener('focus', () => {
+        label[0].style.color = colorsContact[index == 0 ? index : index - 1];
+    })
+    input[1].addEventListener('focus', () => {
+        label[1].style.color = colorsContact[index == 0 ? index : index - 1];
+    })
+
+    input[0].addEventListener('blur', () => {
+        label[0].style.color = '#000';
+    })
+    input[1].addEventListener('blur', () => {
+        label[1].style.color = '#000';
+    })
+
+    if (index == 2) {
+        btnColor.style.color = "#000000"
+        btnColor.style.border = "2px solid #000000"
+        index = 0
+    } else {
+        btnColor.style.border = "2px solid #ffff"
+        btnColor.style.color = "#FFFFFF"
+        index++
+    }
+}
+
+function comecarQuiz() {
+    var pmpPerguntas = [
+        "01. Qual é o nome da parte da bicicleta que você gira para mudar as marchas?",
+        "02. Como é chamado a função que você usa para parar a bicicleta?",
+        "03. Qual é o componente da bicicleta que você usa para sentar enquanto pedala?",
+        "04. Como é chamado o conjunto de rodas de uma bicicleta?",
+        "05. Qual é o nome da parte da bicicleta onde você segura enquanto pedala?",
+        "06. O que é um pneu de bicicleta cheio de ar chamado?",
+        "07. Que parte da bicicleta é usada para pedalar?",
+        "08. O que você usa para direcionar uma bicicleta?",
+        "09. Como é chamado a função que você usa para alterar a velocidade de uma bicicleta sem mudar de marcha?",
+        "10. Qual é o componente da bicicleta que conecta o selim ao guidão?"
+    ];
+
+    var respostasCorretas = [
+        "cambio",
+        "freio",
+        "selim",
+        "aro",
+        "guidão",
+        "pneu",
+        "pedal",
+        "guidão",
+        "acelerador",
+        "tubo do selim"
+    ];
+
+    var listaPergunta = 0;
+
+    function exibirProximaResposta() {
+        if (listaPergunta < pmpPerguntas.length) {
+            var respostaUsuario = prompt(pmpPerguntas[listaPergunta]);
+            var respostaCorreta = respostasCorretas[listaPergunta];
+            var mensagem = "";
+
+            if (respostaUsuario === respostaCorreta) {
+                mensagem = "Acertou!";
+            } else {
+                mensagem = "Errou! A resposta correta é: " + respostaCorreta;
+            }
+
+            document.getElementById("resultado").innerHTML += "<p>" + (listaPergunta + 1) + ". Sua resposta: " + respostaUsuario + "<br>" + mensagem + "</p>";
+
+            listaPergunta++;
+            setTimeout(exibirProximaResposta, 1000); // Espera 1 segundo antes de mostrar a próxima resposta
+        }
+    }
+
+    exibirProximaResposta();
+}
 
 const slideShow = () => {
     const banner = document.getElementById('banner')
@@ -255,4 +251,6 @@ const slideShow = () => {
     setTimeout(slideShow, time)
 }
 slideShow()
+
+
 
